@@ -12,6 +12,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -49,10 +50,10 @@ class UserResource extends Resource
                 ])
                 ->required(),
                 //select option dari database
-                // Select::make('roles')
-                // ->label('Role')
-                // ->relationship('roles', 'name') func roles yg ada di model user
-                // ->required(),
+                Select::make('roles')
+                ->label('Role')
+                ->relationship('roles', 'name') //func roles yg ada di model user //role dari spatie
+                ->required(),
                 FileUpload::make('photo')
                 ->image()
                 ->required()
@@ -65,9 +66,9 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('photo'),
+                ImageColumn::make('photo'),
                 TextColumn::make('name'),
-                
+                TextColumn::make('roles.name')
             ])
             ->filters([
                 //Tables\Filters\TrashedFilter::make(),
