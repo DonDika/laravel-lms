@@ -6,9 +6,13 @@ use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -24,7 +28,35 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make('name')
+                ->required()
+                ->maxLength(255),
+                TextInput::make('email')
+                ->email()
+                ->required()
+                ->maxLength(255),
+                TextInput::make('password')
+                ->password()
+                ->helperText('minimum 8 karakter')
+                ->required()
+                ->minLength(8)
+                ->maxLength(255),
+                Select::make('occupation')
+                ->options([
+                    'Developer' => 'Developer',
+                    'Designer' => 'Designer',
+                    'Project Manager' => 'Project Manager'
+                ])
+                ->required(),
+                //select option dari database
+                // Select::make('roles')
+                // ->label('Role')
+                // ->relationship('roles', 'name') func roles yg ada di model user
+                // ->required(),
+                FileUpload::make('photo')
+                ->image()
+                ->required()
+
             ]);
     }
 
@@ -33,7 +65,9 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('photo'),
+                TextColumn::make('name'),
+                
             ])
             ->filters([
                 //Tables\Filters\TrashedFilter::make(),
