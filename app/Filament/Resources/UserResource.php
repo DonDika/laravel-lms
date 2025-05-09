@@ -56,7 +56,6 @@ class UserResource extends Resource
                 ->required(),
                 FileUpload::make('photo')
                 ->image()
-                ->required()
 
             ]);
     }
