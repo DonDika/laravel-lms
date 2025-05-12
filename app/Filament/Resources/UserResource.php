@@ -65,7 +65,8 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('photo'),
+                ImageColumn::make('photo')
+                    ->circular(),
                 TextColumn::make('name'),
                 TextColumn::make('roles.name')
             ])

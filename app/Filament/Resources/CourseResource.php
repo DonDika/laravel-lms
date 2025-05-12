@@ -6,6 +6,7 @@ use App\Filament\Resources\CourseResource\Pages;
 use App\Filament\Resources\CourseResource\RelationManagers;
 use App\Filament\Resources\CourseResource\RelationManagers\CourseSectionRelationManager;
 use App\Models\Course;
+use Filament\Actions\ViewAction;
 use Filament\Forms;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\FileUpload;
@@ -89,6 +90,7 @@ class CourseResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make()
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

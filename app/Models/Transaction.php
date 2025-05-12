@@ -36,9 +36,9 @@ class Transaction extends Model
     }
 
     //untuk cek paket langganan yg mana
-    public function price() 
+    public function pricing() 
     {
-        return $this->belongsTo(Pricing::class, 'price_id');
+        return $this->belongsTo(Pricing::class, 'pricing_id');
     }
 
     public function isActive()
