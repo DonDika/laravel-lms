@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use Carbon\Carbon;
+use App\Models\User;
 use Filament\Tables;
 use App\Models\Pricing;
 use Filament\Forms\Form;
@@ -18,7 +19,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\Wizard\Step;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\TransactionResource\Pages;
-
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\ToggleButtons;
 
 class TransactionResource extends Resource
 {
@@ -75,8 +77,7 @@ class TransactionResource extends Resource
                                         ->required()
                                         ->prefix('IDR')
                                         ->numeric()
-                                        ->readOnly()
-                                        ->formatStateUsing(fn ($state) => number_format($state, 0, ',', '.')),
+                                        ->readOnly(),
                                     TextInput::make('total_tax_amount')
                                         ->required()
                                         ->numeric()
@@ -88,7 +89,6 @@ class TransactionResource extends Resource
                                         ->prefix('IDR')
                                         ->readOnly()
                                         ->helperText('Harga sudah termasuk PPN 11%')
-
                                 ]),
                             Grid::make(2)
                                 ->schema([
@@ -107,7 +107,65 @@ class TransactionResource extends Resource
                                         ->required()
 
                                 ])
+                        ]),
+                    
+                    Step::make('Customer Information')
+                        ->schema([
+                            Select::make('user_id')
+                                ->relationship('student', 'email')
+                                ->searchable()
+                                ->preload()
+                                ->live()
+                                ->required()
+                                ->afterStateUpdated(function($state, callable $set){
+                                    $user = User::find($state);
+
+                                    $name = $user->name;
+                                    $email = $user->email;
+
+                                    $set('name', $name);
+                                    $set('email', $email);
+                                })
+                                ->afterStateHydrated(function(callable $set,$state){
+                                    $userId = $state;
+                                    if($userId){
+                                        $user = User::find($state);
+                                        $name = $user->name;
+                                        $email = $user->email;
+                                        $set('name', $name);
+                                        $set('email', $email);
+                                    }
+                                }),
+                            TextInput::make('name')
+                                ->required()
+                                ->readOnly()
+                                ->maxLength(255),
+                            TextInput::make('email')
+                                ->required()
+                                ->readOnly()
+                                ->maxLength(255)
+                        ]),
+                    step::make('Payment Information')
+                        ->schema([
+                            ToggleButtons::make('is_paid')
+                                ->label('Apakah sudah membayar')
+                                ->boolean()
+                                ->grouped()
+                                ->icons([
+                                    true => 'heroicon-o-pencil',
+                                    false => 'heroicon-o-clock'
+
+                                ]),
+                            Select::make('payment_type')
+                                ->options([
+                                    'Midtrans' => 'Midtrans',
+                                    'Manual' => 'Manual'
+                                ]),
+                            FileUpload::make('proof')
+                                ->image()
+
                         ])
+
 
                 ])
                 ->columnSpan('full')

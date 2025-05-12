@@ -14,7 +14,7 @@ class Transaction extends Model
         'user_id',
         'pricing_id',
         'sub_total_amount',
-        'grand_total-amount',
+        'grand_total_amount',
         'total_tax_amount',
         'is_paid',
         'payment_type',
