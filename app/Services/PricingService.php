@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Models\Pricing;
 use App\Repositories\PricingRepositoryInterface;
 
 class PricingService {
@@ -20,13 +19,9 @@ class PricingService {
         return $this->pricingRepository->getAllPackages();
     }
 
-
     // langsung hit ke model
     // public function getAllPackages() 
     // {
     //     return Pricing::all();
     // }
-    
-
-
 }
