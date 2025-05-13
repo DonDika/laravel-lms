@@ -23,6 +23,9 @@ class CategoryResource extends Resource
     //icon
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Managements';
+
+
     //form create
     public static function form(Form $form): Form
     {
