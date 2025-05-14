@@ -17,11 +17,11 @@ class MidtransService {
     }
     
     // $params berisi informasi, menerima informasi dari PaymentService berupa produk apa, paket langganan apa dll
-    public function createSnapToken(Array $dataTransaction)
+    public function createSnapToken(Array $params)
     {
         try {
             // lalu akan tersimpan di server midtrans
-            return Snap::getSnapToken($dataTransaction);
+            return Snap::getSnapToken($params);
         } catch(\Exception $exception) {
             Log::error('Failed to create Snap token: ' . $exception->getMessage());
             throw $exception;
@@ -36,7 +36,9 @@ class MidtransService {
             return [
                 'order_id' => $notification->order_id,
                 'transaction_status' => $notification->transaction_status,
-                'gross_amount' => $notification->groos_amount
+                'gross_amount' => $notification->groos_amount,
+                'custom_field1' => $notification->custom_field1, // userid
+                'custom_field2' => $notification->custom_field2  // pricingid, untuk mengetahui notifikasi ini untuk transaksi yg mana
             ];
         } catch (\Exception $exception) {
             Log::error('Midtrans notification error: ' . $exception->getMessage());
