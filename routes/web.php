@@ -7,6 +7,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[FrontController::class, 'index'])->name('front.index');
 
 
+// route midtrans, mengirimkan webhook notifikasi, lalu dikirimkan ke method payment..
+Route::match(['get', 'post'],'/booking/payment/midtrans/notification',
+[FrontController::class, 'paymentMidtransNotification'])
+->name('front.paymentMidtransNotification');
+
+
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
