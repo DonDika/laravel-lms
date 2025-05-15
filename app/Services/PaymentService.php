@@ -32,11 +32,11 @@ class PaymentService
     public function createPayment(int $pricingId)
     {
         $user = Auth::user();
-        $pricing = $this->pricingRepository->findById($pricingId); //repository
+        $pricing = $this->pricingRepository->findById($pricingId); //repository // minta/ambil datanya melalui repo dan dijadikan variable
         //$pricing = Pricing::findOrFail($pricingId); //model
 
         $tax = 0.11;
-        $totalTax = $pricing->price * $tax;
+        $totalTax = $pricing->price * $tax; // data yg diminta lalu diolah
         $grandTotal = $pricing->price + $totalTax;
 
         // data transaction
