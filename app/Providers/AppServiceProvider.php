@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Models\Transaction;
 use App\Observers\TransactionObserver;
+use App\Repositories\CourseRepository;
+use App\Repositories\CourseRepositoryInterface;
 use App\Repositories\PricingRepository;
 use App\Repositories\PricingRepositoryInterface;
 use App\Repositories\TransactionRepository;
@@ -19,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(PricingRepositoryInterface::class, PricingRepository::class );
         $this->app->singleton(TransactionRepositoryInterface::class, TransactionRepository::class);
+        $this->app->singleton(CourseRepositoryInterface::class, CourseRepository::class);
     }
 
     /**
