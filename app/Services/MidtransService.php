@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Services;
+
 use Midtrans\Snap;
 use Midtrans\Config;
 use Midtrans\Notification;

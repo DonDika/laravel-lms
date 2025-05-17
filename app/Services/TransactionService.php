@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Models\Pricing;
-use App\Models\Transaction;
 use App\Repositories\PricingRepositoryInterface;
 use App\Repositories\TransactionRepositoryInterface;
 use Illuminate\Support\Facades\Auth;

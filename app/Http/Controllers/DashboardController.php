@@ -16,16 +16,16 @@ class DashboardController extends Controller
     }
 
 
-    public function subscription()
+    public function subscriptions()
     {
         $transaction = $this->transactionService->getUserTransactions();
-        return view('front.subscription',compact('transaction'));
+        return view('front.subscriptions',compact('transaction'));
     }
 
 
-    public function subscriptionDetail(Transaction $transaction)
+    public function subscriptionDetails(Transaction $transaction)
     {
-        return view('front.subscription_detail', compact($transaction));
+        return view('front.subscription_details', compact($transaction));
     }
 
 

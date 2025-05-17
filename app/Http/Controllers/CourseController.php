@@ -93,11 +93,9 @@ class CourseController extends Controller
         ]);
 
         $keyword = $request->search;
-        $coure = $this->courseService->searchCourses($keyword);
+        $course = $this->courseService->searchCourses($keyword);
 
-        return view('courses.search', compact('keywword','courses'));
-
-
+        return view('courses.search', compact('keywword','course'));
     }
 
 

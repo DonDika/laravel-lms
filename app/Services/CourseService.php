@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Services;
+
 use App\Models\Course;
 use App\Repositories\CourseRepositoryInterface;
 use Illuminate\Support\Facades\Auth;

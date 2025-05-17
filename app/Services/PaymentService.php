@@ -2,13 +2,13 @@
 
 namespace App\Services;
 
-use MidtransService;
 use App\Models\Pricing;
+use App\Services\MidtransService;
 use App\Helpers\TransactionHelper;
-use App\Repositories\PricingRepositoryInterface;
-use App\Repositories\TransactionRepositoryInterface;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use App\Repositories\PricingRepositoryInterface;
+use App\Repositories\TransactionRepositoryInterface;
 
 class PaymentService  
 {
