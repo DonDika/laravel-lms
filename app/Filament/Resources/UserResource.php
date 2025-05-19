@@ -32,33 +32,32 @@ class UserResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name')
-                ->required()
-                ->maxLength(255),
+                    ->required()
+                    ->maxLength(255),
                 TextInput::make('email')
-                ->email()
-                ->required()
-                ->maxLength(255),
+                    ->email()
+                    ->required()
+                    ->maxLength(255),
                 TextInput::make('password')
-                ->password()
-                ->helperText('minimum 8 karakter')
-                ->required()
-                ->minLength(8)
-                ->maxLength(255),
+                    ->password()
+                    ->helperText('minimum 8 karakter')
+                    ->required()
+                    ->minLength(8)
+                    ->maxLength(255),
                 Select::make('occupation')
-                ->options([
-                    'Developer' => 'Developer',
-                    'Designer' => 'Designer',
-                    'Project Manager' => 'Project Manager'
-                ])
-                ->required(),
+                    ->options([
+                        'Developer' => 'Developer',
+                        'Designer' => 'Designer',
+                        'Project Manager' => 'Project Manager'
+                    ])
+                    ->required(),
                 //select option dari database
                 Select::make('roles')
-                ->label('Role')
-                ->relationship('roles', 'name') //func roles yg ada di model user //role dari spatie
-                ->required(),
+                    ->label('Role')
+                    ->relationship('roles', 'name') //func roles yg ada di model user //role dari spatie
+                    ->required(),
                 FileUpload::make('photo')
-                ->image()
-
+                    ->image()
             ]);
     }
 

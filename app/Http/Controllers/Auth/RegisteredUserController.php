@@ -33,13 +33,25 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'occupation' => ['required', 'string', 'max:255'],
+            'photo' => ['required', 'image', 'mimes:png,jpg,jpeg'],
         ]);
+
+        // simpan photo ke storage
+        if($request->hasFile('photo')){
+            $photoPath = $request->file('photo')->store('photos', 'public');
+        }
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'occupation' => $request->occupation,
+            'photo' => $photoPath,
         ]);
+
+        // memberikan role ke user
+        $user->assignRole('student');
 
         event(new Registered($user));
 
