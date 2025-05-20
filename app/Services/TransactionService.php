@@ -48,7 +48,7 @@ class TransactionService {
             'totalTaxAmount',
             'grandTotalAmount',
             'subTotalAmount',
-            'priicing',
+            'pricing',
             'user',
             'alreadySubscribed',
             'startedAt',

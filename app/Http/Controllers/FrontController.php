@@ -45,7 +45,7 @@ class FrontController extends Controller
     public function checkout(Pricing $pricing)
     {
         $checkoutData = $this->transactionService->prepareCheckout($pricing);
-        if ($checkoutData['already_subscribed']) {
+        if ($checkoutData['alreadySubscribed']) {
             return redirect()->route('front.pricing')->with('error', 'You are already subscribed to this plan');
         }
         return view('front.checkout', $checkoutData); // tidak perlu pakai compact lagi karena return dari TransactionService sudah berupa compact

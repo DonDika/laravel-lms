@@ -5,10 +5,10 @@
                 <img src="{{ asset('assets/images/logos/logo.svg') }}" class="flex shrink-0" alt="logo">
             </a>
             <ul class="flex items-center gap-10">
-                <li class="hover:font-semibold transition-all duration-300">
+                <li class="{{ request()->routeIs('front.index') ? 'font-semibold' : '' }}  hover:font-semibold transition-all duration-300">
                     <a href="{{ route('front.index') }}">Home</a>
                 </li>
-                <li class="hover:font-semibold transition-all duration-300">
+                <li class="{{ request()->routeIs('front.pricing') ? 'font-semibold' : '' }} hover:font-semibold transition-all duration-300">
                     <a href="{{ route('front.pricing') }}">Pricing</a>
                 </li>
                 <li class="hover:font-semibold transition-all duration-300">

@@ -22,8 +22,10 @@ class Pricing extends Model
         return $this->hasMany(Transaction::class);
     }
 
+    // digunakan di pricing blade
     public function isSubscribedByUser($userId) 
     {
+        // dihubungkan dulu ke tabel Transaction menggunakan one-to-many kemudian baru query
         return $this->transactions()
             ->where('user_id', $userId)
             ->where('is_paid', true)
