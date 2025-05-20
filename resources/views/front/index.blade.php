@@ -1,5 +1,5 @@
-
 @extends('front.layouts.app')
+@section('title', 'LMS DONDIKA')
 @section('content')
     <x-nav-guest/>
     <main class="flex flex-1 items-center py-[70px]">

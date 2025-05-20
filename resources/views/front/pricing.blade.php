@@ -1,4 +1,5 @@
 @extends('front.layouts.app')
+@section('title','Pricing - LMS DONDIKA')
 @section('content')
     <x-nav-guest />
     <main class="flex flex-col flex-1 justify-center">
