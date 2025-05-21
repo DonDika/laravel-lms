@@ -13,7 +13,7 @@ Route::get('/pricing', [FrontController::class, 'pricing'])->name('front.pricing
 // route midtrans, mengirimkan webhook notifikasi, lalu dikirimkan ke method payment..
 Route::match(['get', 'post'],'/booking/payment/midtrans/notification',
 [FrontController::class, 'paymentMidtransNotification'])
-->name('front.paymentMidtransNotification');
+->name('front.payment.midtrans.notification');
 
 
 Route::middleware('auth')->group(function () {
@@ -59,7 +59,7 @@ Route::middleware('auth')->group(function () {
         ->name('front.checkout');
 
         Route::post('/booking/payment/midtrans', [FrontController::class, 'paymentStoreMidtrans'])
-        ->name('front.payment_store_midtrans');
+        ->name('front.payment.store.midtrans');
     
     });
 
