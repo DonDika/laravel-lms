@@ -47,8 +47,8 @@ class CourseService
     {
         $course->load(['courseSections.sectionContents']);
 
-        $currentSection = $course->courseSections()->find($contentSectionId);
-        $currentContent = $currentSection ? $currentSection->sectionContents()->find($sectionContentId) : null;
+        $currentSection = $course->courseSections->find($contentSectionId);
+        $currentContent = $currentSection ? $currentSection->sectionContents->find($sectionContentId) : null;
 
         $nextContent = null;
 
@@ -62,7 +62,7 @@ class CourseService
         if(!$nextContent && $currentSection){
             $nextSection = $course->courseSections
                 ->where('id', '>', $currentSection->id)
-                ->shortBy('id')
+                ->sortBy('id')
                 ->first();
             if ($nextSection) {
                 $nextContent = $nextSection->sectionContents->sortBy('id')->first();

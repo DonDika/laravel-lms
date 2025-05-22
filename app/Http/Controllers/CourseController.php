@@ -64,7 +64,7 @@ class CourseController extends Controller
     {
         $learningData = $this->courseService->getLearningData($course, $contentSectionId, $sectionContenId);
         
-        return view('courses.learning',compact('learningData'));
+        return view('courses.learning',$learningData);
     }
 
 

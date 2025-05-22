@@ -56,10 +56,10 @@
                     <img src="{{ asset('assets/images/icons/like.svg') }}" class="w-5 h-5" alt="icon">
                     <span class="font-semibold text-xs">4.8</span>
                 </p>
-                <button type="button" class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-10">
+                {{-- <button type="button" class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-10">
                     <img src="{{ asset('assets/images/icons/video-circle-green-fill.svg') }}"
                         class="flex w-[60px] h-[60px] shrink-0" alt="icon">
-                </button>
+                </button> --}}
             </div>
 
             <div id="course-info" class="flex flex-col justify-center gap-[30px]">
