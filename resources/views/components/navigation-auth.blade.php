@@ -4,9 +4,9 @@
             <a href="{{ route('front.index') }}" class="flex shrink-0">
                 <img src="{{ asset('assets/images/logos/logo.svg') }}" class="flex shrink-0" alt="logo">
             </a>
-            <form action="search-course.html" class="relative ">
+            <form method="GET" action="{{ route('dashboard.search.courses') }}" class="relative ">
                 <label class="group">
-                    <input type="text" name="" id=""
+                    <input type="text" name="search" id=""
                         class="appearance-none outline-none ring-1 ring-obito-grey rounded-full w-[400px]  py-[14px] px-5 bg-white font-bold placeholder:font-normal placeholder:text-obito-text-secondary group-focus-within:ring-obito-green transition-all duration-300 pr-[50px]"
                         placeholder="Search course by name">
                     <button type="submit"
