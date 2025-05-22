@@ -66,7 +66,7 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->transaction()
             ->where('is_paid',true)
-            ->where('ended_at', '=>', now())
+            ->where('ended_at', '>=', now())
             ->first();
     }
 
@@ -74,7 +74,7 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->transaction()
             ->where('is_paid', true)
-            ->where('ended_at','=>', now())
+            ->where('ended_at','>=', now())
             ->exists();
     }
 }

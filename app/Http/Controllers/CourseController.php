@@ -37,10 +37,12 @@ class CourseController extends Controller
 
     public function details(Course $course) 
     {
+        // eager loading
         $course->load([
             'category',
             'benefits',
-            'courseSections.sectionContents'
+            'courseSections.sectionContents',
+            'courseMentors.mentor'
         ]);
 
         return view('courses.details', compact('course'));
@@ -53,7 +55,8 @@ class CourseController extends Controller
         $firstSectionAndContent = $this->courseService->getFirstSectionAndContent($course);
     
         return view('courses.success_joined', array_merge(
-            compact('course','studentName'), $firstSectionAndContent
+            compact('course','studentName'), 
+            $firstSectionAndContent
         ));
     }
 
