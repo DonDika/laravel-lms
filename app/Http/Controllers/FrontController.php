@@ -7,6 +7,7 @@ use App\Services\PaymentService;
 use App\Services\PricingService;
 use App\Services\TransactionService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 
 class FrontController extends Controller
@@ -75,6 +76,8 @@ class FrontController extends Controller
 
     public function paymentMidtransNotification(Request $request)
     {
+        Log::info('🔥 Midtrans webhook hit!');
+        Log::info($request->all());
         try {
             $transactionStatus = $this->paymentService->handlePaymentNotification();
             if(!$transactionStatus){
@@ -82,6 +85,7 @@ class FrontController extends Controller
             }
             return response()->json(['status' => $transactionStatus], 200); // transaksi berhasil dibuat di database
         } catch (\Exception $exception) {
+            Log::error('Failed to handle Midtrans notification:', ['error' => $exception->getMessage()]);
             return response()->json(['error' => 'Failed to process notification'], 500);
         }
     }

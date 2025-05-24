@@ -38,7 +38,7 @@ class MidtransService {
             $data = [
                 'order_id' => $notification->order_id,
                 'transaction_status' => $notification->transaction_status,
-                'gross_amount' => $notification->groos_amount,
+                'gross_amount' => $notification->gross_amount,
                 'custom_field1' => $notification->custom_field1, // userid
                 'custom_field2' => $notification->custom_field2  // pricingid, untuk mengetahui notifikasi ini untuk transaksi yg mana
             ];

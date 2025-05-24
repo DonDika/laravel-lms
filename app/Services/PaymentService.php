@@ -93,6 +93,7 @@ class PaymentService
         $startedAt = now();
         $endedAt = $startedAt->copy()->addMonths($pricing->duration);
 
+        // parsing data from midtrans & pricing to transaction
         $transactionData = [
             'user_id' => $notification['custom_field1'],
             'pricing_id' => $notification['custom_field2'],

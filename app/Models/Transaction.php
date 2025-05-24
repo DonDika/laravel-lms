@@ -45,5 +45,5 @@ class Transaction extends Model
     {
         return $this->is_paid && $this->ended_at->isFuture();
     }
-
 }
+

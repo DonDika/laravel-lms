@@ -44,7 +44,7 @@
                         <p class="flex items-center gap-[6px]">
                             <img src="{{ asset('assets/images/icons/menu-board-green.svg') }}" class="w-6 flex shrink-0"
                                 alt="icon">
-                            <span class="font-semibold text-sm leading-[21px]">{{ $course->contentCount }} Lessons</span>
+                            <span class="font-semibold text-sm leading-[21px]">{{ $course->content_count }} Lessons</span>
                         </p>
                     </div>
                     <div class="flex gap-4 items-center">

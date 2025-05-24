@@ -18,7 +18,7 @@
             </p>
             <p class="flex items-center gap-[6px]">
                 <img src="{{ asset('assets/images/icons/menu-board-green.svg') }}" class="flex shrink-0 w-5" alt="icon">
-                <span class="text-sm text-obito-text-secondary">{{ $course->contentCount }} Lesson</span>
+                <span class="text-sm text-obito-text-secondary">{{ $course->content_count }} Lesson</span>
             </p>
             <p class="flex items-center gap-[6px]">
                 <img src="{{ asset('assets/images/icons/briefcase-green.svg') }}" class="flex shrink-0 w-5" alt="icon">
@@ -27,3 +27,5 @@
         </div>
     </div>
 </a>
+
+

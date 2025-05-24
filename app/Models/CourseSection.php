@@ -25,3 +25,5 @@ class CourseSection extends Model
         return $this->hasMany(SectionContent::class, 'course_section_id');
     }
 }
+
+

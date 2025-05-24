@@ -15,6 +15,15 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+
+        // untuk mengizinkan cdn atau styling lainnya yg terblokir saat prod
+        $middleware->trustProxies(at:'*');
+
+        // untuk mengizinkan webhook dari midtrans, karna midtrans mengirim webhook tanpa ada csrf
+        $middleware->validateCsrfTokens(except:[
+            '/booking/payment/midtrans/notification',
+        ]);
+
         $middleware->alias([
             'role' => RoleMiddleware::class,
             'permission' => PermissionMiddleware::class,

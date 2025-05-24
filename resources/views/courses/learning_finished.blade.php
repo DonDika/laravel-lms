@@ -29,7 +29,7 @@
                     </div>
                     <div class="flex items-center gap-[6px]">
                         <img src="{{ asset('assets/images/icons/menu-board-green.svg') }}" alt="icon" class="size-5 shrink-0" />
-                        <p class="text-sm leading-[21px] text-obito-text-secondary">{{ $course->contentCount }} Lessons</p>
+                        <p class="text-sm leading-[21px] text-obito-text-secondary">{{ $course->content_count }} Lessons</p>
                     </div>
                 </div>
             </div>

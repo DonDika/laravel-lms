@@ -2,9 +2,10 @@
 @section('title', 'Course Learning - LMS DONDIKA')
 
 @section('content')
-
     <div class="flex h-screen">
+        
         <aside class="flex flex-col border border-obito-grey bg-white">
+
             <div class="w-[260px] pb-[20px] h-[280px] px-5 pt-5 flex flex-col gap-5">
                 <ul>
                     <li>
@@ -26,9 +27,9 @@
                 </header>
                 <hr class="border-obito-grey" />
             </div>
+
             <div id="lessons-container" class="h-full overflow-y-auto [&::-webkit-scrollbar]:hidden w-[260px]">
                 <nav class="px-5 pb-[33px] flex flex-col gap-5">
-
                     @foreach ($course->courseSections as $section)
                         <div class="lesson accordion flex flex-col gap-4">
                             <button type="button" data-expand="{{ $section->id }}" class="flex items-center justify-between">
@@ -39,18 +40,19 @@
                             <div id="{{ $section->id }}" class="">
                                 <ul class="flex flex-col gap-4">
                                     @foreach ($section->sectionContents as $content)
-                                        <li class="group {{ $currentSection && $section->id == $currentSection->id && $currentContent->id == $content->id ? 'active' : '' }}">
-                                                <a href="{{ route('dashboard.course.learning', [
-                                                    'course' => $course->slug,
-                                                    'courseSection' => $section->id,
-                                                    'sectionContent' => $content->id
-                                                ]) }}">
-                                                    <div class="px-4 group-[&.active]:bg-obito-black group-[&.active]:border-transparent group-[&.active]:text-white py-[10px] rounded-full border border-obito-grey group-hover:bg-obito-black transition-all duration-300">
-                                                        <h3 class="font-semibold text-sm leading-[21px] group-hover:text-white transition-all duration-300">
-                                                            {{ $content->name }}
-                                                        </h3>
-                                                    </div>
-                                                </a>
+                                        <li class="group {{ $currentSection && $section->id == 
+                                                            $currentSection->id && $currentContent->id == 
+                                                            $content->id ? 'active' : '' }}">
+                                            <a href="{{ route('dashboard.course.learning', [
+                                                'course' => $course->slug,
+                                                'courseSection' => $section->id,
+                                                'sectionContent' => $content->id ]) }}">
+                                                <div class="px-4 group-[&.active]:bg-obito-black group-[&.active]:border-transparent group-[&.active]:text-white py-[10px] rounded-full border border-obito-grey group-hover:bg-obito-black transition-all duration-300">
+                                                    <h3 class="font-semibold text-sm leading-[21px] group-hover:text-white transition-all duration-300">
+                                                        {{ $content->name }}
+                                                    </h3>
+                                                </div>
+                                            </a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -63,6 +65,7 @@
         </aside>
 
         <div class="flex-grow overflow-y-auto">
+
             <main class="pt-[30px] pb-[118px] pl-[50px]">
                 <article>
                     <div class="content-ebook">
@@ -98,8 +101,6 @@
                                     <span class="font-semibold">Finish Learning</span>
                                 </a>
                             @endif
-
-                            
                         </div>
                     </div>
                 </div>

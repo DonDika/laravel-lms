@@ -60,8 +60,4 @@ class Course extends Model
             return $section->sectionContents->count();
         });
     }
-
-
-
-
 }
