@@ -11,18 +11,20 @@ services:
       - ./:/var/www/html
     ports:
       - 8081:80
+    restart: unless-stopped
 
   database:
     image: mysql:8.0.0
     environment:
-      MYSQL_USER: "lms"
+      MYSQL_USER: "admin-lms"
       MYSQL_PASSWORD: "password"
-      MYSQL_DATABASE: "laravel-lms-docker"
+      MYSQL_DATABASE: "laravel-lms"
       MYSQL_ROOT_PASSWORD: "rootpass"  
     ports:
       - 8306:3306
     volumes:
       - database:/var/lib/mysql
+    restart: unless-stopped
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -34,50 +36,7 @@ services:
       PMA_HOST: database
       PMA_PORT: 3306
       MYSQL_ROOT_PASSWORD: rootpass  
+    restart: unless-stopped
 
 volumes:
   database:
-
-
-
-
-
-
-
-# # local development disarankan pakai versi 2, untuk production versi 3
-# version: '2'
-
-# services:
-#   # menjalankan docker yg sudah dibuat
-#   app:
-#     image: php-apache
-#     links:
-#       - database
-#     depends_on:
-#       - database
-#     # semua yg ada di project di-binding/mounting ke directory container
-#     # Semua file & folder dari host (VSCode kamu) akan tersinkron otomatis ke direktori /var/www/html di dalam container.
-#     volumes:
-#       - ./:/var/www/html
-#     # mapping port yg akan digunakan
-#     ports:
-#       - 8081:80
-#       # host:container
-
-#   database:
-#     image: mysql:8.0.0
-#     # konfigurasi yg digunakan mysql  
-#     environment:
-#       MYSQL_USER: "lms"
-#       MYSQL_PASSWORD: "password"
-#       MYSQL_RANDOM_ROOT_PASSWORD: "yes"
-#       MYSQL_DATABASE: "laravel-lms-docker"
-#     # mapping port yg akan digunakan
-#     ports:
-#       - 8307:3306
-#       # host:container
-#     volumes:
-#       - database:/var/lib/mysql
-
-# volumes:
-#   database:
